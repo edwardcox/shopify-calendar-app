@@ -1,0 +1,40 @@
+{
+    "name": "your-vendor-name/shopify-calendar-app",
+    "description": "A Shopify Calendar App with document management and group sharing",
+    "type": "project",
+    "require": {
+        "php": "^8.2",
+        "shopify/shopify-api": "^5.6",
+        "vlucas/phpdotenv": "^5.5",
+        "guzzlehttp/guzzle": "^7.5",
+        "monolog/monolog": "^3.3",
+        "twig/twig": "^3.5",
+        "league/flysystem": "^3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0",
+        "mockery/mockery": "^1.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ]
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
