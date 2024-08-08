@@ -12,6 +12,6 @@ define('DB_PASS', $_ENV['DB_PASS']);
 
 define('SHOPIFY_API_KEY', $_ENV['SHOPIFY_API_KEY']);
 define('SHOPIFY_API_SECRET', $_ENV['SHOPIFY_API_SECRET']);
-define('SHOPIFY_SCOPE', $_ENV['SHOPIFY_SCOPE']);
+define('SHOPIFY_SCOPE', $_ENV['SHOPIFY_SCOPES']);
 
 define('APP_URL', $_ENV['APP_URL']);

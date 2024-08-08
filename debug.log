@@ -1,0 +1,738 @@
+[2024-08-08 15:44:23] Starting index.php
+[2024-08-08 15:44:23] Starting class imports
+[2024-08-08 15:44:23] Class App\Controllers\AuthController exists
+[2024-08-08 15:44:23] Class App\Controllers\EventController exists
+[2024-08-08 15:44:23] Class App\Controllers\UserController exists
+[2024-08-08 15:44:23] Class App\ShopifyIntegration exists
+[2024-08-08 15:44:23] Class existence check completed
+[2024-08-08 15:44:23] Class imports completed
+[2024-08-08 15:44:23] Session started
+[2024-08-08 15:44:23] Database connection established
+[2024-08-08 15:44:23] ShopifyIntegration initialized
+[2024-08-08 15:44:23] Requested route: /shop-calendar-new/index.php
+[2024-08-08 15:44:23] User not authenticated, redirecting to login
+[2024-08-08 15:47:49] Starting index.php
+[2024-08-08 15:47:49] Starting class imports
+[2024-08-08 15:47:49] Class App\Controllers\AuthController exists
+[2024-08-08 15:47:49] Class App\Controllers\EventController exists
+[2024-08-08 15:47:49] Class App\Controllers\UserController exists
+[2024-08-08 15:47:49] Class App\ShopifyIntegration exists
+[2024-08-08 15:47:49] Class existence check completed
+[2024-08-08 15:47:49] Class imports completed
+[2024-08-08 15:47:49] Session started
+[2024-08-08 15:47:49] Database connection established
+[2024-08-08 15:47:49] ShopifyIntegration initialized
+[2024-08-08 15:47:49] Requested route: /shop-calendar-new/
+[2024-08-08 15:47:49] User not authenticated, redirecting to login
+[2024-08-08 15:55:31] Starting index.php
+[2024-08-08 15:55:31] Starting class imports
+[2024-08-08 15:55:31] Class App\Controllers\AuthController exists
+[2024-08-08 15:55:31] Class App\Controllers\EventController exists
+[2024-08-08 15:55:31] Class App\Controllers\UserController exists
+[2024-08-08 15:55:31] Class App\ShopifyIntegration exists
+[2024-08-08 15:55:31] Class existence check completed
+[2024-08-08 15:55:31] Class imports completed
+[2024-08-08 15:55:31] Session started
+[2024-08-08 15:55:31] Database connection established
+[2024-08-08 15:55:31] ShopifyIntegration initialized
+[2024-08-08 15:55:31] Requested route: /shop-calendar-new/user/add
+[2024-08-08 15:55:31] User not authenticated, redirecting to login
+[2024-08-08 16:02:29] Starting index.php
+[2024-08-08 16:02:29] Required files loaded
+[2024-08-08 16:02:29] Starting class imports
+[2024-08-08 16:02:29] Class App\Controllers\AuthController exists
+[2024-08-08 16:02:29] Class App\Controllers\EventController exists
+[2024-08-08 16:02:29] Class App\Controllers\UserController exists
+[2024-08-08 16:02:29] Class App\ShopifyIntegration exists
+[2024-08-08 16:02:29] Class existence check completed
+[2024-08-08 16:02:29] Class imports completed
+[2024-08-08 16:02:29] Session started
+[2024-08-08 16:02:29] Database connection established
+[2024-08-08 16:02:29] ShopifyIntegration initialized
+[2024-08-08 16:02:29] Processed route: /
+[2024-08-08 16:02:29] Proceeding to route handling
+[2024-08-08 16:02:29] Entering home route
+[2024-08-08 16:02:29] End of index.php
+[2024-08-08 16:12:47] Starting index.php
+[2024-08-08 16:12:47] Required files loaded
+[2024-08-08 16:12:47] Starting class imports
+[2024-08-08 16:12:47] Class App\Controllers\AuthController exists
+[2024-08-08 16:12:47] Class App\Controllers\EventController exists
+[2024-08-08 16:12:47] Class App\Controllers\UserController exists
+[2024-08-08 16:12:47] Class App\ShopifyIntegration exists
+[2024-08-08 16:12:47] Class existence check completed
+[2024-08-08 16:12:47] Class imports completed
+[2024-08-08 16:12:47] Session started
+[2024-08-08 16:12:47] Database connection established
+[2024-08-08 16:12:47] ShopifyIntegration initialized
+[2024-08-08 16:12:47] Processed route: /login
+[2024-08-08 16:12:47] Proceeding to route handling
+[2024-08-08 16:12:47] Entering login route
+[2024-08-08 16:12:47] End of index.php
+[2024-08-08 16:13:09] Starting index.php
+[2024-08-08 16:13:09] Required files loaded
+[2024-08-08 16:13:09] Starting class imports
+[2024-08-08 16:13:09] Class App\Controllers\AuthController exists
+[2024-08-08 16:13:09] Class App\Controllers\EventController exists
+[2024-08-08 16:13:09] Class App\Controllers\UserController exists
+[2024-08-08 16:13:09] Class App\ShopifyIntegration exists
+[2024-08-08 16:13:09] Class existence check completed
+[2024-08-08 16:13:09] Class imports completed
+[2024-08-08 16:13:09] Session started
+[2024-08-08 16:13:09] Database connection established
+[2024-08-08 16:13:09] ShopifyIntegration initialized
+[2024-08-08 16:13:09] Processed route: /login
+[2024-08-08 16:13:09] Proceeding to route handling
+[2024-08-08 16:13:09] Entering login route
+[2024-08-08 16:13:09] End of index.php
+[2024-08-08 16:13:36] Starting index.php
+[2024-08-08 16:13:36] Required files loaded
+[2024-08-08 16:13:36] Starting class imports
+[2024-08-08 16:13:36] Class App\Controllers\AuthController exists
+[2024-08-08 16:13:36] Class App\Controllers\EventController exists
+[2024-08-08 16:13:36] Class App\Controllers\UserController exists
+[2024-08-08 16:13:36] Class App\ShopifyIntegration exists
+[2024-08-08 16:13:36] Class existence check completed
+[2024-08-08 16:13:36] Class imports completed
+[2024-08-08 16:13:36] Session started
+[2024-08-08 16:13:36] Database connection established
+[2024-08-08 16:13:36] ShopifyIntegration initialized
+[2024-08-08 16:13:36] Processed route: /login
+[2024-08-08 16:13:36] Proceeding to route handling
+[2024-08-08 16:13:36] Entering login route
+[2024-08-08 16:13:36] End of index.php
+[2024-08-08 16:13:40] Starting index.php
+[2024-08-08 16:13:40] Required files loaded
+[2024-08-08 16:13:40] Starting class imports
+[2024-08-08 16:13:40] Class App\Controllers\AuthController exists
+[2024-08-08 16:13:40] Class App\Controllers\EventController exists
+[2024-08-08 16:13:40] Class App\Controllers\UserController exists
+[2024-08-08 16:13:40] Class App\ShopifyIntegration exists
+[2024-08-08 16:13:40] Class existence check completed
+[2024-08-08 16:13:40] Class imports completed
+[2024-08-08 16:13:40] Session started
+[2024-08-08 16:13:40] Database connection established
+[2024-08-08 16:13:40] ShopifyIntegration initialized
+[2024-08-08 16:13:40] Processed route: /login
+[2024-08-08 16:13:40] Proceeding to route handling
+[2024-08-08 16:13:40] Entering login route
+[2024-08-08 16:13:40] End of index.php
+[2024-08-08 16:13:49] Starting index.php
+[2024-08-08 16:13:49] Required files loaded
+[2024-08-08 16:13:49] Starting class imports
+[2024-08-08 16:13:49] Class App\Controllers\AuthController exists
+[2024-08-08 16:13:49] Class App\Controllers\EventController exists
+[2024-08-08 16:13:49] Class App\Controllers\UserController exists
+[2024-08-08 16:13:49] Class App\ShopifyIntegration exists
+[2024-08-08 16:13:49] Class existence check completed
+[2024-08-08 16:13:49] Class imports completed
+[2024-08-08 16:13:49] Session started
+[2024-08-08 16:13:49] Database connection established
+[2024-08-08 16:13:49] ShopifyIntegration initialized
+[2024-08-08 16:13:49] Processed route: /login
+[2024-08-08 16:13:49] Proceeding to route handling
+[2024-08-08 16:13:49] Entering login route
+[2024-08-08 16:13:49] End of index.php
+[2024-08-08 16:14:10] Starting index.php
+[2024-08-08 16:14:10] Required files loaded
+[2024-08-08 16:14:10] Starting class imports
+[2024-08-08 16:14:10] Class App\Controllers\AuthController exists
+[2024-08-08 16:14:10] Class App\Controllers\EventController exists
+[2024-08-08 16:14:10] Class App\Controllers\UserController exists
+[2024-08-08 16:14:10] Class App\ShopifyIntegration exists
+[2024-08-08 16:14:10] Class existence check completed
+[2024-08-08 16:14:10] Class imports completed
+[2024-08-08 16:14:10] Session started
+[2024-08-08 16:14:10] Database connection established
+[2024-08-08 16:14:10] ShopifyIntegration initialized
+[2024-08-08 16:14:10] Processed route: /login
+[2024-08-08 16:14:10] Proceeding to route handling
+[2024-08-08 16:14:10] Entering login route
+[2024-08-08 16:14:10] End of index.php
+[2024-08-08 16:25:19] Starting index.php
+[2024-08-08 16:25:19] Required files loaded
+[2024-08-08 16:25:19] Starting class imports
+[2024-08-08 16:25:19] Class App\Controllers\AuthController exists
+[2024-08-08 16:25:19] Class App\Controllers\EventController exists
+[2024-08-08 16:25:19] Class App\Controllers\UserController exists
+[2024-08-08 16:25:19] Class App\ShopifyIntegration exists
+[2024-08-08 16:25:19] Class existence check completed
+[2024-08-08 16:25:19] Class imports completed
+[2024-08-08 16:25:19] Session started
+[2024-08-08 16:25:19] Database connection established
+[2024-08-08 16:25:19] ShopifyIntegration initialized
+[2024-08-08 16:25:19] Processed route: /login
+[2024-08-08 16:25:19] Proceeding to route handling
+[2024-08-08 16:25:19] Entering login route
+[2024-08-08 16:25:20] Starting index.php
+[2024-08-08 16:25:20] Required files loaded
+[2024-08-08 16:25:20] Starting class imports
+[2024-08-08 16:25:20] Class App\Controllers\AuthController exists
+[2024-08-08 16:25:20] Class App\Controllers\EventController exists
+[2024-08-08 16:25:20] Class App\Controllers\UserController exists
+[2024-08-08 16:25:20] Class App\ShopifyIntegration exists
+[2024-08-08 16:25:20] Class existence check completed
+[2024-08-08 16:25:20] Class imports completed
+[2024-08-08 16:25:20] Session started
+[2024-08-08 16:25:20] Database connection established
+[2024-08-08 16:25:20] ShopifyIntegration initialized
+[2024-08-08 16:25:20] Processed route: /dashboard
+[2024-08-08 16:25:20] Proceeding to route handling
+[2024-08-08 16:25:20] Entering dashboard route
+[2024-08-08 16:25:20] No Shopify session, redirecting to auth
+[2024-08-08 16:25:20] No shop provided for Shopify auth
+[2024-08-08 16:25:48] Starting index.php
+[2024-08-08 16:25:48] Required files loaded
+[2024-08-08 16:25:48] Starting class imports
+[2024-08-08 16:25:48] Class App\Controllers\AuthController exists
+[2024-08-08 16:25:48] Class App\Controllers\EventController exists
+[2024-08-08 16:25:48] Class App\Controllers\UserController exists
+[2024-08-08 16:25:48] Class App\ShopifyIntegration exists
+[2024-08-08 16:25:48] Class existence check completed
+[2024-08-08 16:25:48] Class imports completed
+[2024-08-08 16:25:48] Session started
+[2024-08-08 16:25:48] Database connection established
+[2024-08-08 16:25:48] ShopifyIntegration initialized
+[2024-08-08 16:25:48] Processed route: /login
+[2024-08-08 16:25:48] Proceeding to route handling
+[2024-08-08 16:25:48] Entering login route
+[2024-08-08 16:25:48] End of index.php
+[2024-08-08 16:25:58] Starting index.php
+[2024-08-08 16:25:58] Required files loaded
+[2024-08-08 16:25:58] Starting class imports
+[2024-08-08 16:25:58] Class App\Controllers\AuthController exists
+[2024-08-08 16:25:58] Class App\Controllers\EventController exists
+[2024-08-08 16:25:58] Class App\Controllers\UserController exists
+[2024-08-08 16:25:58] Class App\ShopifyIntegration exists
+[2024-08-08 16:25:58] Class existence check completed
+[2024-08-08 16:25:58] Class imports completed
+[2024-08-08 16:25:58] Session started
+[2024-08-08 16:25:58] Database connection established
+[2024-08-08 16:25:58] ShopifyIntegration initialized
+[2024-08-08 16:25:58] Processed route: /login
+[2024-08-08 16:25:58] Proceeding to route handling
+[2024-08-08 16:25:58] Entering login route
+[2024-08-08 16:25:59] Starting index.php
+[2024-08-08 16:25:59] Required files loaded
+[2024-08-08 16:25:59] Starting class imports
+[2024-08-08 16:25:59] Class App\Controllers\AuthController exists
+[2024-08-08 16:25:59] Class App\Controllers\EventController exists
+[2024-08-08 16:25:59] Class App\Controllers\UserController exists
+[2024-08-08 16:25:59] Class App\ShopifyIntegration exists
+[2024-08-08 16:25:59] Class existence check completed
+[2024-08-08 16:25:59] Class imports completed
+[2024-08-08 16:25:59] Session started
+[2024-08-08 16:25:59] Database connection established
+[2024-08-08 16:25:59] ShopifyIntegration initialized
+[2024-08-08 16:25:59] Processed route: /dashboard
+[2024-08-08 16:25:59] Proceeding to route handling
+[2024-08-08 16:25:59] Entering dashboard route
+[2024-08-08 16:25:59] No Shopify session, redirecting to auth
+[2024-08-08 16:25:59] No shop provided for Shopify auth
+[2024-08-08 17:08:39] Starting index.php
+[2024-08-08 17:08:39] Required files loaded
+[2024-08-08 17:08:39] Starting class imports
+[2024-08-08 17:08:39] Class App\Controllers\AuthController exists
+[2024-08-08 17:08:39] Class App\Controllers\EventController exists
+[2024-08-08 17:08:39] Class App\Controllers\UserController exists
+[2024-08-08 17:08:39] Class App\ShopifyIntegration exists
+[2024-08-08 17:08:39] Class existence check completed
+[2024-08-08 17:08:39] Class imports completed
+[2024-08-08 17:08:39] Session started
+[2024-08-08 17:08:39] Database connection established
+[2024-08-08 17:08:39] ShopifyIntegration initialized
+[2024-08-08 17:08:39] Processed route: /dashboard
+[2024-08-08 17:08:39] Proceeding to route handling
+[2024-08-08 17:08:39] Entering dashboard route
+[2024-08-08 17:08:39] No Shopify session found
+[2024-08-08 17:08:39] End of index.php
+[2024-08-08 17:18:46] Starting index.php
+[2024-08-08 17:18:46] Required files loaded
+[2024-08-08 17:18:46] Starting class imports
+[2024-08-08 17:18:46] Class App\Controllers\AuthController exists
+[2024-08-08 17:18:46] Class App\Controllers\EventController exists
+[2024-08-08 17:18:46] Class App\Controllers\UserController exists
+[2024-08-08 17:18:46] Class App\ShopifyIntegration exists
+[2024-08-08 17:18:46] Class existence check completed
+[2024-08-08 17:18:46] Class imports completed
+[2024-08-08 17:18:46] Session started
+[2024-08-08 17:18:46] Database connection established
+[2024-08-08 17:18:46] ShopifyIntegration initialized
+[2024-08-08 17:18:46] Processed route: /dashboard
+[2024-08-08 17:18:46] Proceeding to route handling
+[2024-08-08 17:18:46] Entering dashboard route
+[2024-08-08 17:18:46] No Shopify session found
+[2024-08-08 17:18:46] End of index.php
+[2024-08-08 17:19:01] Starting index.php
+[2024-08-08 17:19:01] Required files loaded
+[2024-08-08 17:19:01] Starting class imports
+[2024-08-08 17:19:01] Class App\Controllers\AuthController exists
+[2024-08-08 17:19:01] Class App\Controllers\EventController exists
+[2024-08-08 17:19:01] Class App\Controllers\UserController exists
+[2024-08-08 17:19:01] Class App\ShopifyIntegration exists
+[2024-08-08 17:19:01] Class existence check completed
+[2024-08-08 17:19:01] Class imports completed
+[2024-08-08 17:19:01] Session started
+[2024-08-08 17:19:01] Database connection established
+[2024-08-08 17:19:01] ShopifyIntegration initialized
+[2024-08-08 17:19:01] Processed route: /shopify/auth
+[2024-08-08 17:19:01] Entering Shopify auth route
+[2024-08-08 17:23:44] Starting index.php
+[2024-08-08 17:23:44] Required files loaded
+[2024-08-08 17:23:44] Starting class imports
+[2024-08-08 17:23:44] Class App\Controllers\AuthController exists
+[2024-08-08 17:23:44] Class App\Controllers\EventController exists
+[2024-08-08 17:23:44] Class App\Controllers\UserController exists
+[2024-08-08 17:23:44] Class App\ShopifyIntegration exists
+[2024-08-08 17:23:44] Class existence check completed
+[2024-08-08 17:23:44] Class imports completed
+[2024-08-08 17:23:44] Session started
+[2024-08-08 17:23:44] Database connection established
+[2024-08-08 17:23:44] ShopifyIntegration initialized
+[2024-08-08 17:23:44] Processed route: /dashboard
+[2024-08-08 17:23:44] Proceeding to route handling
+[2024-08-08 17:23:44] Entering dashboard route
+[2024-08-08 17:23:44] No Shopify session found
+[2024-08-08 17:23:44] End of index.php
+[2024-08-08 17:25:48] Starting index.php
+[2024-08-08 17:25:48] Required files loaded
+[2024-08-08 17:25:48] Starting class imports
+[2024-08-08 17:25:48] Class App\Controllers\AuthController exists
+[2024-08-08 17:25:48] Class App\Controllers\EventController exists
+[2024-08-08 17:25:48] Class App\Controllers\UserController exists
+[2024-08-08 17:25:48] Class App\ShopifyIntegration exists
+[2024-08-08 17:25:48] Class existence check completed
+[2024-08-08 17:25:48] Class imports completed
+[2024-08-08 17:25:48] Session started
+[2024-08-08 17:25:48] Database connection established
+[2024-08-08 17:25:48] ShopifyIntegration initialized
+[2024-08-08 17:25:48] Processed route: /dashboard
+[2024-08-08 17:25:48] Proceeding to route handling
+[2024-08-08 17:25:48] Entering dashboard route
+[2024-08-08 17:25:48] End of index.php
+[2024-08-08 17:26:05] Starting index.php
+[2024-08-08 17:26:05] Required files loaded
+[2024-08-08 17:26:05] Starting class imports
+[2024-08-08 17:26:05] Class App\Controllers\AuthController exists
+[2024-08-08 17:26:05] Class App\Controllers\EventController exists
+[2024-08-08 17:26:05] Class App\Controllers\UserController exists
+[2024-08-08 17:26:05] Class App\ShopifyIntegration exists
+[2024-08-08 17:26:05] Class existence check completed
+[2024-08-08 17:26:05] Class imports completed
+[2024-08-08 17:26:05] Session started
+[2024-08-08 17:26:05] Database connection established
+[2024-08-08 17:26:05] ShopifyIntegration initialized
+[2024-08-08 17:26:05] Processed route: /logout
+[2024-08-08 17:26:05] Proceeding to route handling
+[2024-08-08 17:26:05] Entering logout route
+[2024-08-08 17:26:05] Starting index.php
+[2024-08-08 17:26:05] Required files loaded
+[2024-08-08 17:26:05] Starting class imports
+[2024-08-08 17:26:05] Class App\Controllers\AuthController exists
+[2024-08-08 17:26:05] Class App\Controllers\EventController exists
+[2024-08-08 17:26:05] Class App\Controllers\UserController exists
+[2024-08-08 17:26:05] Class App\ShopifyIntegration exists
+[2024-08-08 17:26:05] Class existence check completed
+[2024-08-08 17:26:05] Class imports completed
+[2024-08-08 17:26:05] Session started
+[2024-08-08 17:26:05] Database connection established
+[2024-08-08 17:26:05] ShopifyIntegration initialized
+[2024-08-08 17:26:05] Processed route: /login
+[2024-08-08 17:26:05] Proceeding to route handling
+[2024-08-08 17:26:05] Entering login route
+[2024-08-08 17:26:05] End of index.php
+[2024-08-08 17:26:15] Starting index.php
+[2024-08-08 17:26:15] Required files loaded
+[2024-08-08 17:26:15] Starting class imports
+[2024-08-08 17:26:15] Class App\Controllers\AuthController exists
+[2024-08-08 17:26:15] Class App\Controllers\EventController exists
+[2024-08-08 17:26:15] Class App\Controllers\UserController exists
+[2024-08-08 17:26:15] Class App\ShopifyIntegration exists
+[2024-08-08 17:26:15] Class existence check completed
+[2024-08-08 17:26:15] Class imports completed
+[2024-08-08 17:26:15] Session started
+[2024-08-08 17:26:15] Database connection established
+[2024-08-08 17:26:15] ShopifyIntegration initialized
+[2024-08-08 17:26:15] Processed route: /login
+[2024-08-08 17:26:15] Proceeding to route handling
+[2024-08-08 17:26:15] Entering login route
+[2024-08-08 17:26:16] Starting index.php
+[2024-08-08 17:26:16] Required files loaded
+[2024-08-08 17:26:16] Starting class imports
+[2024-08-08 17:26:16] Class App\Controllers\AuthController exists
+[2024-08-08 17:26:16] Class App\Controllers\EventController exists
+[2024-08-08 17:26:16] Class App\Controllers\UserController exists
+[2024-08-08 17:26:16] Class App\ShopifyIntegration exists
+[2024-08-08 17:26:16] Class existence check completed
+[2024-08-08 17:26:16] Class imports completed
+[2024-08-08 17:26:16] Session started
+[2024-08-08 17:26:16] Database connection established
+[2024-08-08 17:26:16] ShopifyIntegration initialized
+[2024-08-08 17:26:16] Processed route: /dashboard
+[2024-08-08 17:26:16] Proceeding to route handling
+[2024-08-08 17:26:16] Entering dashboard route
+[2024-08-08 17:26:16] End of index.php
+[2024-08-08 17:33:06] Starting index.php
+[2024-08-08 17:33:06] Required files loaded
+[2024-08-08 17:33:06] Starting class imports
+[2024-08-08 17:33:06] Class App\Controllers\AuthController exists
+[2024-08-08 17:33:06] Class App\Controllers\EventController exists
+[2024-08-08 17:33:06] Class App\Controllers\UserController exists
+[2024-08-08 17:33:06] Class App\ShopifyIntegration exists
+[2024-08-08 17:33:06] Class existence check completed
+[2024-08-08 17:33:06] Class imports completed
+[2024-08-08 17:33:06] Session started
+[2024-08-08 17:33:06] Database connection established
+[2024-08-08 17:33:06] ShopifyIntegration initialized
+[2024-08-08 17:33:06] Processed route: /dashboard
+[2024-08-08 17:33:06] Proceeding to route handling
+[2024-08-08 17:33:06] Entering dashboard route
+[2024-08-08 17:33:06] End of index.php
+[2024-08-08 17:33:07] Starting index.php
+[2024-08-08 17:33:07] Required files loaded
+[2024-08-08 17:33:07] Starting class imports
+[2024-08-08 17:33:07] Class App\Controllers\AuthController exists
+[2024-08-08 17:33:07] Class App\Controllers\EventController exists
+[2024-08-08 17:33:07] Class App\Controllers\UserController exists
+[2024-08-08 17:33:07] Class App\ShopifyIntegration exists
+[2024-08-08 17:33:07] Class existence check completed
+[2024-08-08 17:33:07] Class imports completed
+[2024-08-08 17:33:07] Session started
+[2024-08-08 17:33:07] Database connection established
+[2024-08-08 17:33:07] ShopifyIntegration initialized
+[2024-08-08 17:33:07] Processed route: /event/get
+[2024-08-08 17:33:07] Proceeding to route handling
+[2024-08-08 17:33:07] Entering event get route
+[2024-08-08 17:33:41] Starting index.php
+[2024-08-08 17:33:41] Required files loaded
+[2024-08-08 17:33:41] Starting class imports
+[2024-08-08 17:33:41] Class App\Controllers\AuthController exists
+[2024-08-08 17:33:41] Class App\Controllers\EventController exists
+[2024-08-08 17:33:41] Class App\Controllers\UserController exists
+[2024-08-08 17:33:41] Class App\ShopifyIntegration exists
+[2024-08-08 17:33:41] Class existence check completed
+[2024-08-08 17:33:41] Class imports completed
+[2024-08-08 17:33:41] Session started
+[2024-08-08 17:33:41] Database connection established
+[2024-08-08 17:33:41] ShopifyIntegration initialized
+[2024-08-08 17:33:41] Processed route: /event/create
+[2024-08-08 17:33:41] Proceeding to route handling
+[2024-08-08 17:33:41] Entering event create route
+[2024-08-08 17:48:11] Starting index.php
+[2024-08-08 17:48:11] Required files loaded
+[2024-08-08 17:48:11] Starting class imports
+[2024-08-08 17:48:11] Class App\Controllers\AuthController exists
+[2024-08-08 17:48:11] Class App\Controllers\EventController exists
+[2024-08-08 17:48:11] Class App\Controllers\UserController exists
+[2024-08-08 17:48:11] Class App\ShopifyIntegration exists
+[2024-08-08 17:48:11] Class existence check completed
+[2024-08-08 17:48:11] Class imports completed
+[2024-08-08 17:48:11] Session started
+[2024-08-08 17:48:11] Database connection established
+[2024-08-08 17:48:11] ShopifyIntegration initialized
+[2024-08-08 17:48:11] Processed route: /dashboard
+[2024-08-08 17:48:11] Proceeding to route handling
+[2024-08-08 17:48:11] Entering dashboard route
+[2024-08-08 17:48:11] End of index.php
+[2024-08-08 17:48:11] Starting index.php
+[2024-08-08 17:48:11] Required files loaded
+[2024-08-08 17:48:11] Starting class imports
+[2024-08-08 17:48:11] Class App\Controllers\AuthController exists
+[2024-08-08 17:48:11] Class App\Controllers\EventController exists
+[2024-08-08 17:48:11] Class App\Controllers\UserController exists
+[2024-08-08 17:48:11] Class App\ShopifyIntegration exists
+[2024-08-08 17:48:11] Class existence check completed
+[2024-08-08 17:48:11] Class imports completed
+[2024-08-08 17:48:11] Session started
+[2024-08-08 17:48:11] Database connection established
+[2024-08-08 17:48:11] ShopifyIntegration initialized
+[2024-08-08 17:48:11] Processed route: /event/get
+[2024-08-08 17:48:11] Proceeding to route handling
+[2024-08-08 17:48:11] Entering event get route
+[2024-08-08 17:48:11] End of index.php
+[2024-08-08 17:48:20] Starting index.php
+[2024-08-08 17:48:20] Required files loaded
+[2024-08-08 17:48:20] Starting class imports
+[2024-08-08 17:48:20] Class App\Controllers\AuthController exists
+[2024-08-08 17:48:20] Class App\Controllers\EventController exists
+[2024-08-08 17:48:20] Class App\Controllers\UserController exists
+[2024-08-08 17:48:20] Class App\ShopifyIntegration exists
+[2024-08-08 17:48:20] Class existence check completed
+[2024-08-08 17:48:20] Class imports completed
+[2024-08-08 17:48:20] Session started
+[2024-08-08 17:48:20] Database connection established
+[2024-08-08 17:48:20] ShopifyIntegration initialized
+[2024-08-08 17:48:20] Processed route: /event/create
+[2024-08-08 17:48:20] Proceeding to route handling
+[2024-08-08 17:48:20] Entering event create route
+[2024-08-08 17:48:20] End of index.php
+[2024-08-08 17:51:16] Starting index.php
+[2024-08-08 17:51:16] Required files loaded
+[2024-08-08 17:51:16] Starting class imports
+[2024-08-08 17:51:16] Class App\Controllers\AuthController exists
+[2024-08-08 17:51:16] Class App\Controllers\EventController exists
+[2024-08-08 17:51:16] Class App\Controllers\UserController exists
+[2024-08-08 17:51:16] Class App\ShopifyIntegration exists
+[2024-08-08 17:51:16] Class existence check completed
+[2024-08-08 17:51:16] Class imports completed
+[2024-08-08 17:51:16] Session started
+[2024-08-08 17:51:16] Database connection established
+[2024-08-08 17:51:16] ShopifyIntegration initialized
+[2024-08-08 17:51:16] Processed route: /dashboard
+[2024-08-08 17:51:16] Proceeding to route handling
+[2024-08-08 17:51:16] Entering dashboard route
+[2024-08-08 17:51:16] End of index.php
+[2024-08-08 17:51:17] Starting index.php
+[2024-08-08 17:51:17] Required files loaded
+[2024-08-08 17:51:17] Starting class imports
+[2024-08-08 17:51:17] Class App\Controllers\AuthController exists
+[2024-08-08 17:51:17] Class App\Controllers\EventController exists
+[2024-08-08 17:51:17] Class App\Controllers\UserController exists
+[2024-08-08 17:51:17] Class App\ShopifyIntegration exists
+[2024-08-08 17:51:17] Class existence check completed
+[2024-08-08 17:51:17] Class imports completed
+[2024-08-08 17:51:17] Session started
+[2024-08-08 17:51:17] Database connection established
+[2024-08-08 17:51:17] ShopifyIntegration initialized
+[2024-08-08 17:51:17] Processed route: /event/get
+[2024-08-08 17:51:17] Proceeding to route handling
+[2024-08-08 17:51:17] Entering event get route
+[2024-08-08 17:51:17] End of index.php
+[2024-08-08 17:51:43] Starting index.php
+[2024-08-08 17:51:43] Required files loaded
+[2024-08-08 17:51:43] Starting class imports
+[2024-08-08 17:51:43] Class App\Controllers\AuthController exists
+[2024-08-08 17:51:43] Class App\Controllers\EventController exists
+[2024-08-08 17:51:43] Class App\Controllers\UserController exists
+[2024-08-08 17:51:43] Class App\ShopifyIntegration exists
+[2024-08-08 17:51:43] Class existence check completed
+[2024-08-08 17:51:43] Class imports completed
+[2024-08-08 17:51:43] Session started
+[2024-08-08 17:51:43] Database connection established
+[2024-08-08 17:51:43] ShopifyIntegration initialized
+[2024-08-08 17:51:43] Processed route: /event/create
+[2024-08-08 17:51:43] Proceeding to route handling
+[2024-08-08 17:51:43] Entering event create route
+[2024-08-08 17:51:43] End of index.php
+[2024-08-08 17:51:45] Starting index.php
+[2024-08-08 17:51:45] Required files loaded
+[2024-08-08 17:51:45] Starting class imports
+[2024-08-08 17:51:45] Class App\Controllers\AuthController exists
+[2024-08-08 17:51:45] Class App\Controllers\EventController exists
+[2024-08-08 17:51:45] Class App\Controllers\UserController exists
+[2024-08-08 17:51:45] Class App\ShopifyIntegration exists
+[2024-08-08 17:51:45] Class existence check completed
+[2024-08-08 17:51:45] Class imports completed
+[2024-08-08 17:51:45] Session started
+[2024-08-08 17:51:45] Database connection established
+[2024-08-08 17:51:45] ShopifyIntegration initialized
+[2024-08-08 17:51:45] Processed route: /event/get
+[2024-08-08 17:51:45] Proceeding to route handling
+[2024-08-08 17:51:45] Entering event get route
+[2024-08-08 17:51:45] End of index.php
+[2024-08-08 17:55:42] Starting index.php
+[2024-08-08 17:55:42] Required files loaded
+[2024-08-08 17:55:42] Starting class imports
+[2024-08-08 17:55:42] Class App\Controllers\AuthController exists
+[2024-08-08 17:55:42] Class App\Controllers\EventController exists
+[2024-08-08 17:55:42] Class App\Controllers\UserController exists
+[2024-08-08 17:55:42] Class App\ShopifyIntegration exists
+[2024-08-08 17:55:42] Class existence check completed
+[2024-08-08 17:55:42] Class imports completed
+[2024-08-08 17:55:42] Session started
+[2024-08-08 17:55:42] Database connection established
+[2024-08-08 17:55:42] ShopifyIntegration initialized
+[2024-08-08 17:55:42] Processed route: /dashboard
+[2024-08-08 17:55:42] Proceeding to route handling
+[2024-08-08 17:55:42] Entering dashboard route
+[2024-08-08 17:55:42] End of index.php
+[2024-08-08 17:55:42] Starting index.php
+[2024-08-08 17:55:42] Required files loaded
+[2024-08-08 17:55:42] Starting class imports
+[2024-08-08 17:55:42] Class App\Controllers\AuthController exists
+[2024-08-08 17:55:42] Class App\Controllers\EventController exists
+[2024-08-08 17:55:42] Class App\Controllers\UserController exists
+[2024-08-08 17:55:42] Class App\ShopifyIntegration exists
+[2024-08-08 17:55:42] Class existence check completed
+[2024-08-08 17:55:42] Class imports completed
+[2024-08-08 17:55:42] Session started
+[2024-08-08 17:55:42] Database connection established
+[2024-08-08 17:55:42] ShopifyIntegration initialized
+[2024-08-08 17:55:42] Processed route: /event/get
+[2024-08-08 17:55:42] Proceeding to route handling
+[2024-08-08 17:55:42] Entering event get route
+[2024-08-08 17:55:42] End of index.php
+[2024-08-08 17:56:22] Starting index.php
+[2024-08-08 17:56:22] Required files loaded
+[2024-08-08 17:56:22] Starting class imports
+[2024-08-08 17:56:22] Class App\Controllers\AuthController exists
+[2024-08-08 17:56:22] Class App\Controllers\EventController exists
+[2024-08-08 17:56:22] Class App\Controllers\UserController exists
+[2024-08-08 17:56:22] Class App\ShopifyIntegration exists
+[2024-08-08 17:56:22] Class existence check completed
+[2024-08-08 17:56:22] Class imports completed
+[2024-08-08 17:56:22] Session started
+[2024-08-08 17:56:22] Database connection established
+[2024-08-08 17:56:22] ShopifyIntegration initialized
+[2024-08-08 17:56:22] Processed route: /logout
+[2024-08-08 17:56:22] Proceeding to route handling
+[2024-08-08 17:56:22] Entering logout route
+[2024-08-08 17:56:23] Starting index.php
+[2024-08-08 17:56:23] Required files loaded
+[2024-08-08 17:56:23] Starting class imports
+[2024-08-08 17:56:23] Class App\Controllers\AuthController exists
+[2024-08-08 17:56:23] Class App\Controllers\EventController exists
+[2024-08-08 17:56:23] Class App\Controllers\UserController exists
+[2024-08-08 17:56:23] Class App\ShopifyIntegration exists
+[2024-08-08 17:56:23] Class existence check completed
+[2024-08-08 17:56:23] Class imports completed
+[2024-08-08 17:56:23] Session started
+[2024-08-08 17:56:23] Database connection established
+[2024-08-08 17:56:23] ShopifyIntegration initialized
+[2024-08-08 17:56:23] Processed route: /login
+[2024-08-08 17:56:23] Proceeding to route handling
+[2024-08-08 17:56:23] Entering login route
+[2024-08-08 17:56:23] End of index.php
+[2024-08-08 17:56:35] Starting index.php
+[2024-08-08 17:56:35] Required files loaded
+[2024-08-08 17:56:35] Starting class imports
+[2024-08-08 17:56:35] Class App\Controllers\AuthController exists
+[2024-08-08 17:56:35] Class App\Controllers\EventController exists
+[2024-08-08 17:56:35] Class App\Controllers\UserController exists
+[2024-08-08 17:56:35] Class App\ShopifyIntegration exists
+[2024-08-08 17:56:35] Class existence check completed
+[2024-08-08 17:56:35] Class imports completed
+[2024-08-08 17:56:35] Session started
+[2024-08-08 17:56:35] Database connection established
+[2024-08-08 17:56:35] ShopifyIntegration initialized
+[2024-08-08 17:56:35] Processed route: /login
+[2024-08-08 17:56:35] Proceeding to route handling
+[2024-08-08 17:56:35] Entering login route
+[2024-08-08 17:56:35] Starting index.php
+[2024-08-08 17:56:35] Required files loaded
+[2024-08-08 17:56:35] Starting class imports
+[2024-08-08 17:56:35] Class App\Controllers\AuthController exists
+[2024-08-08 17:56:35] Class App\Controllers\EventController exists
+[2024-08-08 17:56:35] Class App\Controllers\UserController exists
+[2024-08-08 17:56:35] Class App\ShopifyIntegration exists
+[2024-08-08 17:56:35] Class existence check completed
+[2024-08-08 17:56:35] Class imports completed
+[2024-08-08 17:56:35] Session started
+[2024-08-08 17:56:35] Database connection established
+[2024-08-08 17:56:35] ShopifyIntegration initialized
+[2024-08-08 17:56:35] Processed route: /dashboard
+[2024-08-08 17:56:35] Proceeding to route handling
+[2024-08-08 17:56:35] Entering dashboard route
+[2024-08-08 17:56:35] End of index.php
+[2024-08-08 17:56:36] Starting index.php
+[2024-08-08 17:56:36] Required files loaded
+[2024-08-08 17:56:36] Starting class imports
+[2024-08-08 17:56:36] Class App\Controllers\AuthController exists
+[2024-08-08 17:56:36] Class App\Controllers\EventController exists
+[2024-08-08 17:56:36] Class App\Controllers\UserController exists
+[2024-08-08 17:56:36] Class App\ShopifyIntegration exists
+[2024-08-08 17:56:36] Class existence check completed
+[2024-08-08 17:56:36] Class imports completed
+[2024-08-08 17:56:36] Session started
+[2024-08-08 17:56:36] Database connection established
+[2024-08-08 17:56:36] ShopifyIntegration initialized
+[2024-08-08 17:56:36] Processed route: /event/get
+[2024-08-08 17:56:36] Proceeding to route handling
+[2024-08-08 17:56:36] Entering event get route
+[2024-08-08 17:56:36] End of index.php
+[2024-08-08 18:04:37] Starting index.php
+[2024-08-08 18:04:37] Required files loaded
+[2024-08-08 18:04:37] Starting class imports
+[2024-08-08 18:04:37] Class App\Controllers\AuthController exists
+[2024-08-08 18:04:37] Class App\Controllers\EventController exists
+[2024-08-08 18:04:37] Class App\Controllers\UserController exists
+[2024-08-08 18:04:37] Class App\ShopifyIntegration exists
+[2024-08-08 18:04:37] Class existence check completed
+[2024-08-08 18:04:37] Class imports completed
+[2024-08-08 18:04:37] Session started
+[2024-08-08 18:04:37] Database connection established
+[2024-08-08 18:04:37] ShopifyIntegration initialized
+[2024-08-08 18:04:37] Processed route: /dashboard
+[2024-08-08 18:04:37] Proceeding to route handling
+[2024-08-08 18:04:37] Entering dashboard route
+[2024-08-08 18:04:37] End of index.php
+[2024-08-08 18:04:38] Starting index.php
+[2024-08-08 18:04:38] Required files loaded
+[2024-08-08 18:04:38] Starting class imports
+[2024-08-08 18:04:38] Class App\Controllers\AuthController exists
+[2024-08-08 18:04:38] Class App\Controllers\EventController exists
+[2024-08-08 18:04:38] Class App\Controllers\UserController exists
+[2024-08-08 18:04:38] Class App\ShopifyIntegration exists
+[2024-08-08 18:04:38] Class existence check completed
+[2024-08-08 18:04:38] Class imports completed
+[2024-08-08 18:04:38] Session started
+[2024-08-08 18:04:38] Database connection established
+[2024-08-08 18:04:38] ShopifyIntegration initialized
+[2024-08-08 18:04:38] Processed route: /event/get
+[2024-08-08 18:04:38] Proceeding to route handling
+[2024-08-08 18:04:38] Entering event get route
+[2024-08-08 18:04:38] End of index.php
+[2024-08-08 18:15:21] Starting index.php
+[2024-08-08 18:15:21] Required files loaded
+[2024-08-08 18:15:21] Starting class imports
+[2024-08-08 18:15:21] Class App\Controllers\AuthController exists
+[2024-08-08 18:15:21] Class App\Controllers\EventController exists
+[2024-08-08 18:15:21] Class App\Controllers\UserController exists
+[2024-08-08 18:15:21] Class App\ShopifyIntegration exists
+[2024-08-08 18:15:21] Class existence check completed
+[2024-08-08 18:15:21] Class imports completed
+[2024-08-08 18:15:21] Session started
+[2024-08-08 18:15:21] Database connection established
+[2024-08-08 18:15:21] ShopifyIntegration initialized
+[2024-08-08 18:15:21] Processed route: /dashboard
+[2024-08-08 18:15:21] Proceeding to route handling
+[2024-08-08 18:15:21] Entering dashboard route
+[2024-08-08 18:15:21] End of index.php
+[2024-08-08 18:15:22] Starting index.php
+[2024-08-08 18:15:22] Required files loaded
+[2024-08-08 18:15:22] Starting class imports
+[2024-08-08 18:15:22] Class App\Controllers\AuthController exists
+[2024-08-08 18:15:22] Class App\Controllers\EventController exists
+[2024-08-08 18:15:22] Class App\Controllers\UserController exists
+[2024-08-08 18:15:22] Class App\ShopifyIntegration exists
+[2024-08-08 18:15:22] Class existence check completed
+[2024-08-08 18:15:22] Class imports completed
+[2024-08-08 18:15:22] Session started
+[2024-08-08 18:15:22] Database connection established
+[2024-08-08 18:15:22] ShopifyIntegration initialized
+[2024-08-08 18:15:22] Processed route: /event/get
+[2024-08-08 18:15:22] Proceeding to route handling
+[2024-08-08 18:15:22] Entering event get route
+[2024-08-08 18:15:22] End of index.php
+[2024-08-08 18:15:31] Starting index.php
+[2024-08-08 18:15:31] Required files loaded
+[2024-08-08 18:15:31] Starting class imports
+[2024-08-08 18:15:31] Class App\Controllers\AuthController exists
+[2024-08-08 18:15:31] Class App\Controllers\EventController exists
+[2024-08-08 18:15:31] Class App\Controllers\UserController exists
+[2024-08-08 18:15:31] Class App\ShopifyIntegration exists
+[2024-08-08 18:15:31] Class existence check completed
+[2024-08-08 18:15:31] Class imports completed
+[2024-08-08 18:15:31] Session started
+[2024-08-08 18:15:31] Database connection established
+[2024-08-08 18:15:31] ShopifyIntegration initialized
+[2024-08-08 18:15:31] Processed route: /event/delete
+[2024-08-08 18:15:31] Proceeding to route handling
+[2024-08-08 18:15:31] Entering event delete route
+[2024-08-08 18:15:31] End of index.php
+[2024-08-08 18:15:32] Starting index.php
+[2024-08-08 18:15:32] Required files loaded
+[2024-08-08 18:15:32] Starting class imports
+[2024-08-08 18:15:32] Class App\Controllers\AuthController exists
+[2024-08-08 18:15:32] Class App\Controllers\EventController exists
+[2024-08-08 18:15:32] Class App\Controllers\UserController exists
+[2024-08-08 18:15:32] Class App\ShopifyIntegration exists
+[2024-08-08 18:15:32] Class existence check completed
+[2024-08-08 18:15:32] Class imports completed
+[2024-08-08 18:15:32] Session started
+[2024-08-08 18:15:32] Database connection established
+[2024-08-08 18:15:32] ShopifyIntegration initialized
+[2024-08-08 18:15:32] Processed route: /event/get
+[2024-08-08 18:15:32] Proceeding to route handling
+[2024-08-08 18:15:32] Entering event get route
+[2024-08-08 18:15:32] End of index.php

@@ -13,29 +13,52 @@ class AuthController {
         $this->user = new User($db);
     }
 
-    public function showLoginForm() {
+    public function showLoginForm($error = null) {
         include __DIR__ . '/../Views/login.php';
     }
 
     public function login() {
-        $username = $_POST['username'] ?? '';
-        $password = $_POST['password'] ?? '';
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $username = $_POST['username'] ?? '';
+            $password = $_POST['password'] ?? '';
 
-        $user = $this->user->findByUsername($username);
+            if (empty($username) || empty($password)) {
+                $this->showLoginForm("Username and password are required.");
+                return;
+            }
 
-        if ($user && $this->user->validatePassword($user, $password)) {
-            $_SESSION['user_id'] = $user['id'];
-            header('Location: /dashboard');
-            exit;
+            $user = $this->user->findByUsername($username);
+
+            if ($user) {
+                if (password_verify($password, $user['password'])) {
+                    // Password is hashed and correct
+                    $this->loginUser($user);
+                } elseif ($password === $user['password']) {
+                    // Password is stored in plain text and correct
+                    // Update the password to be hashed
+                    $this->user->updatePassword($user['id'], $password);
+                    $this->loginUser($user);
+                } else {
+                    $this->showLoginForm("Invalid username or password.");
+                }
+            } else {
+                $this->showLoginForm("Invalid username or password.");
+            }
         } else {
-            $error = "Invalid username or password";
-            include __DIR__ . '/../Views/login.php';
+            $this->showLoginForm();
         }
+    }
+
+    private function loginUser($user) {
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['username'] = $user['username'];
+        header("Location: /shop-calendar-new/dashboard");
+        exit;
     }
 
     public function logout() {
         session_destroy();
-        header('Location: /login');
+        header("Location: /shop-calendar-new/login");
         exit;
     }
 }

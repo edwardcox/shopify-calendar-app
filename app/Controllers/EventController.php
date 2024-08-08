@@ -3,128 +3,136 @@
 namespace App\Controllers;
 
 use App\Models\Event;
-use App\Models\Document;
 
 class EventController {
     private $db;
     private $event;
-    private $document;
 
     public function __construct($db) {
         $this->db = $db;
         $this->event = new Event($db);
-        $this->document = new Document($db);
-    }
-
-    public function view($id) {
-        $event = $this->event->getById($id);
-        $documents = $this->document->getByEventId($id);
-        include __DIR__ . '/../Views/event_view.php';
-    }
-
-    public function uploadDocument($eventId) {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['document'])) {
-            $file = $_FILES['document'];
-            $uploadedBy = $_SESSION['user_id'];
-
-            if ($this->document->upload($eventId, $file, $uploadedBy)) {
-                header("Location: /event/view/$eventId");
-                exit;
-            } else {
-                $error = "Failed to upload document";
-            }
-        }
-        
-        $event = $this->event->getById($eventId);
-        $documents = $this->document->getByEventId($eventId);
-        include __DIR__ . '/../Views/event_view.php';
-    }
-
-    public function deleteDocument($documentId) {
-        $sql = "SELECT event_id FROM documents WHERE id = ?";
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute([$documentId]);
-        $document = $stmt->fetch();
-
-        if ($this->document->delete($documentId)) {
-            header("Location: /event/view/{$document['event_id']}");
-            exit;
-        } else {
-            $error = "Failed to delete document";
-            $event = $this->event->getById($document['event_id']);
-            $documents = $this->document->getByEventId($document['event_id']);
-            include __DIR__ . '/../Views/event_view.php';
-        }
-    }
-
-    public function downloadDocument($documentId) {
-        $fileData = $this->document->download($documentId);
-        
-        if ($fileData) {
-            header("Content-Type: {$fileData['mime_type']}");
-            header("Content-Disposition: attachment; filename=\"{$fileData['filename']}\"");
-            echo $fileData['content'];
-            exit;
-        } else {
-            echo "File not found";
-        }
-    }
-    
-    public function index($groupId) {
-        $events = $this->event->getByGroupId($groupId);
-        include __DIR__ . '/../Views/calendar.php';
     }
 
     public function create() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $groupId = $_POST['group_id'];
-            $title = $_POST['title'];
-            $description = $_POST['description'];
-            $startDate = $_POST['start_date'];
-            $endDate = $_POST['end_date'];
-            $createdBy = $_SESSION['user_id'];
+            $userId = $_SESSION['user_id'] ?? null;
+            $title = $_POST['title'] ?? '';
+            $description = $_POST['description'] ?? '';
+            $startDate = $_POST['start_date'] ?? '';
+            $endDate = $_POST['end_date'] ?? '';
 
-            if ($this->event->create($groupId, $title, $description, $startDate, $endDate, $createdBy)) {
-                header("Location: /calendar?group_id=$groupId");
-                exit;
-            } else {
-                $error = "Failed to create event";
-                include __DIR__ . '/../Views/event_form.php';
+            if (!$userId) {
+                $this->logError("User ID not found in session");
+                http_response_code(401);
+                echo json_encode(['error' => 'User not authenticated']);
+                return;
+            }
+
+            if (empty($title) || empty($startDate) || empty($endDate)) {
+                $this->logError("Missing required fields: " . json_encode($_POST));
+                http_response_code(400);
+                echo json_encode(['error' => 'Missing required fields']);
+                return;
+            }
+
+            try {
+                if ($this->event->create($userId, $title, $description, $startDate, $endDate)) {
+                    echo json_encode(['success' => true, 'message' => 'Event created successfully']);
+                } else {
+                    $this->logError("Failed to create event: " . json_encode($_POST));
+                    http_response_code(500);
+                    echo json_encode(['error' => 'Failed to create event']);
+                }
+            } catch (\Exception $e) {
+                $this->logError("Exception occurred: " . $e->getMessage() . "\n" . $e->getTraceAsString());
+                http_response_code(500);
+                echo json_encode(['error' => 'An unexpected error occurred']);
             }
         } else {
-            include __DIR__ . '/../Views/event_form.php';
+            http_response_code(405);
+            echo json_encode(['error' => 'Method not allowed']);
         }
     }
 
-    public function edit($id) {
-        $event = $this->event->getById($id);
-        
+    public function update() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $title = $_POST['title'];
-            $description = $_POST['description'];
-            $startDate = $_POST['start_date'];
-            $endDate = $_POST['end_date'];
+            $userId = $_SESSION['user_id'] ?? null;
+            $eventId = $_POST['id'] ?? null;
+            $title = $_POST['title'] ?? '';
+            $description = $_POST['description'] ?? '';
+            $startDate = $_POST['start_date'] ?? '';
+            $endDate = $_POST['end_date'] ?? '';
 
-            if ($this->event->update($id, $title, $description, $startDate, $endDate)) {
-                header("Location: /calendar?group_id={$event['group_id']}");
-                exit;
-            } else {
-                $error = "Failed to update event";
+            if (!$userId || !$eventId) {
+                http_response_code(400);
+                echo json_encode(['error' => 'Invalid request']);
+                return;
             }
-        }
 
-        include __DIR__ . '/../Views/event_form.php';
+            if (empty($title) || empty($startDate) || empty($endDate)) {
+                http_response_code(400);
+                echo json_encode(['error' => 'Missing required fields']);
+                return;
+            }
+
+            if ($this->event->update($eventId, $userId, $title, $description, $startDate, $endDate)) {
+                echo json_encode(['success' => true, 'message' => 'Event updated successfully']);
+            } else {
+                http_response_code(500);
+                echo json_encode(['error' => 'Failed to update event']);
+            }
+        } else {
+            http_response_code(405);
+            echo json_encode(['error' => 'Method not allowed']);
+        }
+    }
+    public function delete() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $userId = $_SESSION['user_id'] ?? null;
+            $eventId = $_POST['id'] ?? null;
+
+            if (!$userId || !$eventId) {
+                http_response_code(400);
+                echo json_encode(['error' => 'Invalid request']);
+                return;
+            }
+
+            if ($this->event->delete($eventId, $userId)) {
+                echo json_encode(['success' => true, 'message' => 'Event deleted successfully']);
+            } else {
+                http_response_code(500);
+                echo json_encode(['error' => 'Failed to delete event']);
+            }
+        } else {
+            http_response_code(405);
+            echo json_encode(['error' => 'Method not allowed']);
+        }
+    }
+    private function logError($message) {
+        $logFile = __DIR__ . '/../../error.log';
+        $timestamp = date('Y-m-d H:i:s');
+        file_put_contents($logFile, "[$timestamp] $message\n", FILE_APPEND);
     }
 
-    public function delete($id) {
-        $event = $this->event->getById($id);
-        
-        if ($this->event->delete($id)) {
-            header("Location: /calendar?group_id={$event['group_id']}");
-            exit;
-        } else {
-            $error = "Failed to delete event";
-            include __DIR__ . '/../Views/calendar.php';
+    public function getEvents() {
+        $userId = $_SESSION['user_id'] ?? null;
+        if (!$userId) {
+            http_response_code(401);
+            echo json_encode(['error' => 'User not authenticated']);
+            return;
         }
+    
+        $events = $this->event->getByUserId($userId);
+        $formattedEvents = array_map(function($event) {
+            return [
+                'id' => $event['id'],
+                'title' => $event['title'],
+                'start' => $event['start_date'],
+                'end' => $event['end_date'],
+                'description' => $event['description']
+            ];
+        }, $events);
+    
+        echo json_encode($formattedEvents);
     }
 }

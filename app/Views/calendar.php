@@ -9,9 +9,15 @@
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js'></script>
 </head>
 <body class="bg-gray-100">
-    <div class="container mx-auto p-4">
-        <h1 class="text-2xl font-bold mb-4">Calendar</h1>
-        <div id='calendar'></div>
+    <div class="flex">
+        <div class="w-3/4 p-4">
+            <h1 class="text-2xl font-bold mb-4">Calendar</h1>
+            <div id='calendar'></div>
+        </div>
+        <div class="w-1/4 bg-white p-4 shadow-md">
+            <h2 class="text-xl font-bold mb-4">Upcoming Events</h2>
+            <div id="upcoming-events"></div>
+        </div>
     </div>
 
     <script>
@@ -47,6 +53,24 @@
                 }
             });
             calendar.render();
+
+            // Display upcoming events in sidebar
+            var upcomingEvents = <?php echo json_encode($upcomingEvents); ?>;
+            var upcomingEventsHtml = '';
+            upcomingEvents.forEach(function(event) {
+                var eventDate = new Date(event.start_date);
+                var today = new Date();
+                var diffDays = Math.ceil((eventDate - today) / (1000 * 60 * 60 * 24));
+                
+                upcomingEventsHtml += `
+                    <div class="mb-4 p-2 bg-blue-100 rounded">
+                        <h3 class="font-bold">${event.title}</h3>
+                        <p>In ${diffDays} day(s)</p>
+                        <p>${eventDate.toLocaleDateString()}</p>
+                    </div>
+                `;
+            });
+            document.getElementById('upcoming-events').innerHTML = upcomingEventsHtml;
         });
     </script>
 </body>

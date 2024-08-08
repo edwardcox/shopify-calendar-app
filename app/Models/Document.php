@@ -35,38 +35,49 @@ class Document {
             $stmt = $this->db->prepare($sql);
             return $stmt->execute([$eventId, $filename, $filePath, $fileType, $uploadedBy]);
         } catch (\Exception $e) {
-            // Log the error
             error_log($e->getMessage());
             return false;
         }
     }
 
-    public function getByEventId($eventId) {
-        $sql = "SELECT * FROM documents WHERE event_id = ?";
+    public function getByEventId($eventId, $userId) {
+        $sql = "SELECT d.* FROM documents d
+                JOIN events e ON d.event_id = e.id
+                JOIN user_groups ug ON e.group_id = ug.group_id
+                WHERE d.event_id = ? AND ug.user_id = ?";
         $stmt = $this->db->prepare($sql);
-        $stmt->execute([$eventId]);
+        $stmt->execute([$eventId, $userId]);
         return $stmt->fetchAll();
     }
 
-    public function delete($id) {
-        $sql = "SELECT file_path FROM documents WHERE id = ?";
+    public function delete($id, $userId) {
+        $sql = "SELECT d.file_path FROM documents d
+                JOIN events e ON d.event_id = e.id
+                JOIN user_groups ug ON e.group_id = ug.group_id
+                WHERE d.id = ? AND ug.user_id = ?";
         $stmt = $this->db->prepare($sql);
-        $stmt->execute([$id]);
+        $stmt->execute([$id, $userId]);
         $document = $stmt->fetch();
 
         if ($document && $this->filesystem->fileExists($document['file_path'])) {
             $this->filesystem->delete($document['file_path']);
         }
 
-        $sql = "DELETE FROM documents WHERE id = ?";
+        $sql = "DELETE d FROM documents d
+                JOIN events e ON d.event_id = e.id
+                JOIN user_groups ug ON e.group_id = ug.group_id
+                WHERE d.id = ? AND ug.user_id = ?";
         $stmt = $this->db->prepare($sql);
-        return $stmt->execute([$id]);
+        return $stmt->execute([$id, $userId]);
     }
 
-    public function download($id) {
-        $sql = "SELECT * FROM documents WHERE id = ?";
+    public function download($id, $userId) {
+        $sql = "SELECT d.* FROM documents d
+                JOIN events e ON d.event_id = e.id
+                JOIN user_groups ug ON e.group_id = ug.group_id
+                WHERE d.id = ? AND ug.user_id = ?";
         $stmt = $this->db->prepare($sql);
-        $stmt->execute([$id]);
+        $stmt->execute([$id, $userId]);
         $document = $stmt->fetch();
 
         if ($document && $this->filesystem->fileExists($document['file_path'])) {
