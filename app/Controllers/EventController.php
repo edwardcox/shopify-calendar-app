@@ -30,6 +30,9 @@ class EventController {
             $startDate = $_POST['start_date'] ?? '';
             $endDate = $_POST['end_date'] ?? '';
             $categoryId = $_POST['category_id'] ?? null;
+            $recurrence = $_POST['recurrence'] ?? 'none';
+            $recurrenceEnd = $_POST['recurrence_end'] ?? null;
+            $reminders = json_decode($_POST['reminders'] ?? '[]', true);
 
             if (!$userId) {
                 throw new \Exception('User not authenticated');
@@ -42,7 +45,7 @@ class EventController {
             // Log incoming data for debugging
             error_log("Creating event: " . json_encode($_POST));
 
-            if ($this->event->create($userId, $title, $description, $startDate, $endDate, $categoryId)) {
+            if ($this->event->create($userId, $title, $description, $startDate, $endDate, $categoryId, $recurrence, $recurrenceEnd, $reminders)) {
                 echo json_encode(['success' => true, 'message' => 'Event created successfully']);
             } else {
                 throw new \Exception('Failed to create event');
@@ -69,6 +72,8 @@ class EventController {
             $startDate = $_POST['start_date'] ?? '';
             $endDate = $_POST['end_date'] ?? '';
             $categoryId = $_POST['category_id'] === 'null' ? null : ($_POST['category_id'] ?? null);
+            $recurrence = $_POST['recurrence'] ?? 'none';
+            $recurrenceEnd = $_POST['recurrence_end'] ?? null;
     
             if (!$userId) {
                 throw new \Exception('User not authenticated');
@@ -78,18 +83,18 @@ class EventController {
                 throw new \Exception('Missing required fields');
             }
     
-            // The dates are already in MySQL format, no need to convert
-    
             // Log incoming data for debugging
             error_log("Updating event: " . json_encode([
                 'id' => $eventId,
                 'title' => $title,
                 'start_date' => $startDate,
                 'end_date' => $endDate,
-                'category_id' => $categoryId
+                'category_id' => $categoryId,
+                'recurrence' => $recurrence,
+                'recurrence_end' => $recurrenceEnd
             ]));
     
-            if ($this->event->update($eventId, $userId, $title, $description, $startDate, $endDate, $categoryId)) {
+            if ($this->event->update($eventId, $userId, $title, $description, $startDate, $endDate, $categoryId, $recurrence, $recurrenceEnd)) {
                 echo json_encode(['success' => true, 'message' => 'Event updated successfully']);
             } else {
                 throw new \Exception('Failed to update event');
@@ -131,7 +136,9 @@ class EventController {
                     'extendedProps' => [
                         'description' => $event['description'],
                         'category_id' => $event['category_id'],
-                        'category_color' => $event['category_color'] ?? null
+                        'category_color' => $event['category_color'] ?? null,
+                        'recurrence' => $event['recurrence'],
+                        'recurrence_end' => $event['recurrence_end']
                     ]
                 ];
             }, $events);
@@ -154,6 +161,7 @@ class EventController {
 
             $userId = $_SESSION['user_id'] ?? null;
             $eventId = $_POST['id'] ?? null;
+            $deleteAll = $_POST['delete_all'] ?? false;
 
             if (!$userId) {
                 throw new \Exception('User not authenticated');
@@ -163,7 +171,7 @@ class EventController {
                 throw new \Exception('Missing event ID');
             }
 
-            if ($this->event->delete($eventId, $userId)) {
+            if ($this->event->delete($eventId, $userId, $deleteAll)) {
                 echo json_encode(['success' => true, 'message' => 'Event deleted successfully']);
             } else {
                 throw new \Exception('Failed to delete event');

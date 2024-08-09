@@ -52,6 +52,20 @@
                                 <option value="">Select a category</option>
                             </select>
                         </div>
+                        <div class="mb-4">
+                            <label for="eventRecurrence" class="block text-gray-700 text-sm font-bold mb-2">Recurrence</label>
+                            <select id="eventRecurrence" name="recurrence" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <option value="none">None</option>
+                                <option value="daily">Daily</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="monthly">Monthly</option>
+                                <option value="yearly">Yearly</option>
+                            </select>
+                        </div>
+                        <div id="recurrenceEndDate" class="mb-4 hidden">
+                            <label for="eventRecurrenceEnd" class="block text-gray-700 text-sm font-bold mb-2">Recurrence End Date</label>
+                            <input type="date" id="eventRecurrenceEnd" name="recurrence_end" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        </div>
                     </div>
                     <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                         <button type="submit" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">
@@ -96,6 +110,20 @@
                             <select id="editEventCategory" name="category_id" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                                 <option value="">Select a category</option>
                             </select>
+                        </div>
+                        <div class="mb-4">
+                            <label for="editEventRecurrence" class="block text-gray-700 text-sm font-bold mb-2">Recurrence</label>
+                            <select id="editEventRecurrence" name="recurrence" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <option value="none">None</option>
+                                <option value="daily">Daily</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="monthly">Monthly</option>
+                                <option value="yearly">Yearly</option>
+                            </select>
+                        </div>
+                        <div id="editRecurrenceEndDate" class="mb-4 hidden">
+                            <label for="editEventRecurrenceEnd" class="block text-gray-700 text-sm font-bold mb-2">Recurrence End Date</label>
+                            <input type="date" id="editEventRecurrenceEnd" name="recurrence_end" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                         </div>
                     </div>
                     <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
@@ -165,7 +193,24 @@
                 e.preventDefault();
                 updateEvent();
             });
+
+            document.getElementById('eventRecurrence').addEventListener('change', function() {
+                toggleRecurrenceEndDate(this, 'recurrenceEndDate');
+            });
+
+            document.getElementById('editEventRecurrence').addEventListener('change', function() {
+                toggleRecurrenceEndDate(this, 'editRecurrenceEndDate');
+            });
         });
+
+        function toggleRecurrenceEndDate(select, endDateDivId) {
+            const endDateDiv = document.getElementById(endDateDivId);
+            if (select.value !== 'none') {
+                endDateDiv.classList.remove('hidden');
+            } else {
+                endDateDiv.classList.add('hidden');
+            }
+        }
 
         function fetchCategories() {
             fetch('/shop-calendar-new/event/get-categories')
@@ -189,26 +234,53 @@
         }
 
         function openModal(date) {
+            document.getElementById('eventTitle').value = '';
+            document.getElementById('eventDescription').value = '';
             document.getElementById('eventStart').value = date + 'T00:00';
             document.getElementById('eventEnd').value = date + 'T23:59';
+            document.getElementById('eventCategory').value = '';
+            document.getElementById('eventRecurrence').value = 'none';
+            document.getElementById('eventRecurrenceEnd').value = '';
+            document.getElementById('recurrenceEndDate').classList.add('hidden');
             document.getElementById('eventModal').classList.remove('hidden');
         }
 
         function closeModal() {
-    // Clear all form fields
-    document.getElementById('eventTitle').value = '';
-    document.getElementById('eventDescription').value = '';
-    document.getElementById('eventStart').value = '';
-    document.getElementById('eventEnd').value = '';
-    document.getElementById('eventCategory').value = '';
-
-    // Hide the modal
-    document.getElementById('eventModal').classList.add('hidden');
-}
+            document.getElementById('eventTitle').value = '';
+            document.getElementById('eventDescription').value = '';
+            document.getElementById('eventStart').value = '';
+            document.getElementById('eventEnd').value = '';
+            document.getElementById('eventCategory').value = '';
+            document.getElementById('eventRecurrence').value = 'none';
+            document.getElementById('eventRecurrenceEnd').value = '';
+            document.getElementById('recurrenceEndDate').classList.add('hidden');
+            document.getElementById('eventModal').classList.add('hidden');
+        }
 
         function createEvent() {
             var form = document.getElementById('eventForm');
             var formData = new FormData(form);
+
+            // Convert dates to ISO format, preserving the local time
+            var startDate = new Date(formData.get('start_date'));
+            var endDate = new Date(formData.get('end_date'));
+            formData.set('start_date', formatDateTimeISO(startDate));
+            formData.set('end_date', formatDateTimeISO(endDate));
+
+            // Add reminders
+            const reminderTimes = formData.getAll('reminder_time[]');
+            const reminderTypes = formData.getAll('reminder_type[]');
+            const reminders = reminderTimes.map((time, index) => ({
+                time: time,
+                type: reminderTypes[index]
+            }));
+            formData.set('reminders', JSON.stringify(reminders));
+
+            // Handle recurrence end date
+            if (formData.get('recurrence') !== 'none' && formData.get('recurrence_end')) {
+                var recurrenceEndDate = new Date(formData.get('recurrence_end'));
+                formData.set('recurrence_end', formatDateISO(recurrenceEndDate));
+            }
 
             fetch('/shop-calendar-new/event/create', {
                 method: 'POST',
@@ -230,78 +302,115 @@
             });
         }
 
+        function addReminderField() {
+            const reminderContainer = document.getElementById('reminderContainer');
+            const reminderField = document.createElement('div');
+            reminderField.innerHTML = `
+                <select name="reminder_time[]">
+                    <option value="PT15M">15 minutes before</option>
+                    <option value="PT1H">1 hour before</option>
+                    <option value="P1D">1 day before</option>
+                </select>
+                <select name="reminder_type[]">
+                    <option value="email">Email</option>
+                    <option value="notification">Notification</option>
+                </select>
+                <button type="button" onclick="this.parentElement.remove()">Remove</button>
+            `;
+            reminderContainer.appendChild(reminderField);
+}
         function openEditModal(event) {
-    currentEventId = event.id;
-    document.getElementById('editEventId').value = event.id;
-    document.getElementById('editEventTitle').value = event.title;
-    document.getElementById('editEventDescription').value = event.extendedProps.description || '';
-    
-    // Format the start date
-    let startDate = event.start;
-    document.getElementById('editEventStart').value = formatDateTimeLocal(startDate, false);
-    
-    // Format the end date
-    let endDate = event.end || event.start; // If there's no end date, use the start date
-    document.getElementById('editEventEnd').value = formatDateTimeLocal(endDate, false);
-    
-    document.getElementById('editEventCategory').value = event.extendedProps.category_id || '';
-    document.getElementById('editEventModal').classList.remove('hidden');
-}
+            currentEventId = event.id;
+            document.getElementById('editEventId').value = event.id;
+            document.getElementById('editEventTitle').value = event.title;
+            document.getElementById('editEventDescription').value = event.extendedProps.description || '';
+            
+            // Format the start date
+            let startDate = event.start;
+            document.getElementById('editEventStart').value = formatDateTimeLocal(startDate, false);
+            
+            // Format the end date
+            let endDate = event.end || event.start; // If there's no end date, use the start date
+            document.getElementById('editEventEnd').value = formatDateTimeLocal(endDate, false);
+            
+            document.getElementById('editEventCategory').value = event.extendedProps.category_id || '';
+            document.getElementById('editEventRecurrence').value = event.extendedProps.recurrence || 'none';
+            
+            if (event.extendedProps.recurrence_end) {
+                document.getElementById('editEventRecurrenceEnd').value = formatDateISO(new Date(event.extendedProps.recurrence_end));
+                document.getElementById('editRecurrenceEndDate').classList.remove('hidden');
+            } else {
+                document.getElementById('editEventRecurrenceEnd').value = '';
+                document.getElementById('editRecurrenceEndDate').classList.add('hidden');
+            }
+            
+            document.getElementById('editEventModal').classList.remove('hidden');
+        }
 
-function formatDateTimeLocal(date, useUTC = true) {
-    const year = useUTC ? date.getUTCFullYear() : date.getFullYear();
-    const month = useUTC ? date.getUTCMonth() + 1 : date.getMonth() + 1;
-    const day = useUTC ? date.getUTCDate() : date.getDate();
-    const hours = useUTC ? date.getUTCHours() : date.getHours();
-    const minutes = useUTC ? date.getUTCMinutes() : date.getMinutes();
+        function formatDateTimeLocal(date, useUTC = true) {
+            const year = useUTC ? date.getUTCFullYear() : date.getFullYear();
+            const month = useUTC ? date.getUTCMonth() + 1 : date.getMonth() + 1;
+            const day = useUTC ? date.getUTCDate() : date.getDate();
+            const hours = useUTC ? date.getUTCHours() : date.getHours();
+            const minutes = useUTC ? date.getUTCMinutes() : date.getMinutes();
 
-    return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}T${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
-}
+            return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}T${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+        }
 
         function closeEditModal() {
             document.getElementById('editEventModal').classList.add('hidden');
         }
 
         function updateEvent() {
-    var form = document.getElementById('editEventForm');
-    var formData = new FormData(form);
+            var form = document.getElementById('editEventForm');
+            var formData = new FormData(form);
 
-    // Convert dates to ISO format, preserving the local time
-    var startDate = new Date(formData.get('start_date'));
-    var endDate = new Date(formData.get('end_date'));
-    formData.set('start_date', formatDateTimeISO(startDate));
-    formData.set('end_date', formatDateTimeISO(endDate));
+            // Convert dates to ISO format, preserving the local time
+            var startDate = new Date(formData.get('start_date'));
+            var endDate = new Date(formData.get('end_date'));
+            formData.set('start_date', formatDateTimeISO(startDate));
+            formData.set('end_date', formatDateTimeISO(endDate));
 
-    // Handle empty category_id
-    if (formData.get('category_id') === '') {
-        formData.set('category_id', 'null');
-    }
+            // Handle empty category_id
+            if (formData.get('category_id') === '') {
+                formData.set('category_id', 'null');
+            }
 
-    fetch('/shop-calendar-new/event/update', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert('Event updated successfully');
-            closeEditModal();
-            calendar.refetchEvents();
-        } else {
-            alert('Failed to update event: ' + (data.error || 'Unknown error'));
+            // Handle recurrence end date
+            if (formData.get('recurrence') !== 'none' && formData.get('recurrence_end')) {
+                var recurrenceEndDate = new Date(formData.get('recurrence_end'));
+                formData.set('recurrence_end', formatDateISO(recurrenceEndDate));
+            }
+
+            fetch('/shop-calendar-new/event/update', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Event updated successfully');
+                    closeEditModal();
+                    calendar.refetchEvents();
+                } else {
+                    alert('Failed to update event: ' + (data.error || 'Unknown error'));
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while updating the event. Please check the console for more details.');
+            });
         }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('An error occurred while updating the event. Please check the console for more details.');
-    });
-}
 
-function formatDateTimeISO(date) {
-    const offset = date.getTimezoneOffset();
-    const adjustedDate = new Date(date.getTime() - offset * 60 * 1000);
-    return adjustedDate.toISOString().slice(0, 19).replace('T', ' ');
-}
+        function formatDateTimeISO(date) {
+            const offset = date.getTimezoneOffset();
+            const adjustedDate = new Date(date.getTime() - offset * 60 * 1000);
+            return adjustedDate.toISOString().slice(0, 19).replace('T', ' ');
+        }
+
+        function formatDateISO(date) {
+            return date.toISOString().split('T')[0];
+        }
 
         function deleteEvent() {
             if (confirm('Are you sure you want to delete this event?')) {
@@ -331,4 +440,3 @@ function formatDateTimeISO(date) {
     </script>
 </body>
 </html>
-
