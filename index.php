@@ -92,7 +92,6 @@ if (!isset($_SESSION['user_id']) && !in_array($route, ['/', '/login', '/user/add
 debug_log("Proceeding to route handling");
 
 // Route handling
-// Route handling
 switch ($route) {
     case '/':
     case '':
@@ -166,7 +165,16 @@ switch ($route) {
                 $eventController->delete();
                 break;
     // We'll add more routes for event management here later
-
+    case '/event/get-categories':
+        debug_log("Entering get categories route");
+        if (!isset($_SESSION['user_id'])) {
+            http_response_code(401);
+            echo json_encode(['error' => 'Unauthorized']);
+            exit;
+        }
+        $eventController = new EventController($db);
+        $eventController->getCategories();
+        break;
     default:
         debug_log("No matching route found, displaying 404");
         http_response_code(404);
