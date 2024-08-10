@@ -6,7 +6,25 @@
     <title>Calendar Dashboard - Shopify App</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css' rel='stylesheet' />
+    <link href='https://cdn.jsdelivr.net/npm/@fullcalendar/list@5.10.2/main.min.css' rel='stylesheet' />
+    <link href='https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@5.10.2/main.min.css' rel='stylesheet' />
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/list@5.10.2/main.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@5.10.2/main.min.js'></script>
+    <style>
+        .fc-dayGridYear-view .fc-daygrid-day-frame {
+            min-height: 1.5em;
+        }
+        .fc-dayGridYear-view .fc-daygrid-day-top {
+            flex-direction: row;
+        }
+        .fc-dayGridYear-view .fc-daygrid-day-number {
+            font-size: 0.8em;
+        }
+        .fc-dayGridYear-view .fc-daygrid-event {
+            font-size: 0.7em;
+        }
+    </style>
 </head>
 <body class="bg-gray-100">
     <div class="container mx-auto p-4">
@@ -14,6 +32,25 @@
         
         <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             <h2 class="text-xl font-semibold mb-2">Your Calendar</h2>
+            
+            <div class="mb-4 flex flex-wrap items-center">
+                <div class="w-full md:w-1/3 px-2 mb-4 md:mb-0">
+                    <input type="text" id="searchInput" placeholder="Search events..." class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="w-full md:w-1/3 px-2 mb-4 md:mb-0">
+                    <select id="categoryFilter" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        <option value="">All Categories</option>
+                        <!-- Categories will be populated dynamically -->
+                    </select>
+                </div>
+                <div class="w-full md:w-1/3 px-2">
+                    <div class="flex">
+                        <input type="date" id="startDateFilter" class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mr-2">
+                        <input type="date" id="endDateFilter" class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+                </div>
+            </div>
+            
             <div id='calendar'></div>
         </div>
 
@@ -146,6 +183,7 @@
         let calendar;
         let currentEventId;
         let categories = [];
+        let allEvents = []; // Store all events
 
         document.addEventListener('DOMContentLoaded', function() {
             fetchCategories();
@@ -156,18 +194,36 @@
                 headerToolbar: {
                     left: 'prev,next today',
                     center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                    right: 'dayGridYear,dayGridMonth,timeGridWeek,timeGridDay,listWeek'
                 },
-                events: {
-                    url: '/shop-calendar-new/event/get',
-                    method: 'GET',
-                    failure: function(error) {
-                        console.error('There was an error fetching events:', error);
-                        alert('There was an error while fetching events!');
+                views: {
+                    dayGridYear: {
+                        buttonText: 'Year'
                     },
-                    success: function(content) {
-                        console.log('Events fetched successfully:', content);
+                    dayGridMonth: {
+                        buttonText: 'Month'
+                    },
+                    timeGridWeek: {
+                        buttonText: 'Week'
+                    },
+                    timeGridDay: {
+                        buttonText: 'Day'
+                    },
+                    listWeek: {
+                        buttonText: 'Agenda'
                     }
+                },
+                events: function(info, successCallback, failureCallback) {
+                    fetch('/shop-calendar-new/event/get')
+                        .then(response => response.json())
+                        .then(data => {
+                            allEvents = data; // Store all events
+                            successCallback(filterEvents(data));
+                        })
+                        .catch(error => {
+                            console.error('There was an error fetching events:', error);
+                            failureCallback(error);
+                        });
                 },
                 eventDidMount: function(info) {
                     console.log('Event mounted:', info.event);
@@ -180,7 +236,14 @@
                 },
                 eventClick: function(info) {
                     openEditModal(info.event);
-                }
+                },
+                height: 'auto',
+                firstDay: 1,
+                weekNumbers: true,
+                navLinks: true,
+                businessHours: true,
+                nowIndicator: true,
+                dayMaxEvents: true,
             });
             calendar.render();
 
@@ -201,7 +264,46 @@
             document.getElementById('editEventRecurrence').addEventListener('change', function() {
                 toggleRecurrenceEndDate(this, 'editRecurrenceEndDate');
             });
+
+            // Add event listeners for search and filter inputs
+            document.getElementById('searchInput').addEventListener('input', debounce(updateEvents, 300));
+            document.getElementById('categoryFilter').addEventListener('change', updateEvents);
+            document.getElementById('startDateFilter').addEventListener('change', updateEvents);
+            document.getElementById('endDateFilter').addEventListener('change', updateEvents);
         });
+
+        function updateEvents() {
+            calendar.refetchEvents();
+        }
+
+        function filterEvents(events) {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const startDateFilter = document.getElementById('startDateFilter').value;
+            const endDateFilter = document.getElementById('endDateFilter').value;
+
+            return events.filter(event => {
+                // Search filter
+                if (searchTerm && !event.title.toLowerCase().includes(searchTerm)) {
+                    return false;
+                }
+
+                // Category filter
+                if (categoryFilter && event.extendedProps.category_id != categoryFilter) {
+                    return false;
+                }
+
+                // Date range filter
+                if (startDateFilter && event.start < startDateFilter) {
+                    return false;
+                }
+                if (endDateFilter && event.end > endDateFilter) {
+                    return false;
+                }
+
+                return true;
+            });
+        }
 
         function toggleRecurrenceEndDate(select, endDateDivId) {
             const endDateDiv = document.getElementById(endDateDivId);
@@ -225,11 +327,13 @@
         function populateCategoryDropdowns() {
             const eventCategorySelect = document.getElementById('eventCategory');
             const editEventCategorySelect = document.getElementById('editEventCategory');
+            const categoryFilterSelect = document.getElementById('categoryFilter');
             
             categories.forEach(category => {
                 const option = new Option(category.name, category.id);
                 eventCategorySelect.add(option.cloneNode(true));
-                editEventCategorySelect.add(option);
+                editEventCategorySelect.add(option.cloneNode(true));
+                categoryFilterSelect.add(option.cloneNode(true));
             });
         }
 
@@ -267,15 +371,6 @@
             formData.set('start_date', formatDateTimeISO(startDate));
             formData.set('end_date', formatDateTimeISO(endDate));
 
-            // Add reminders
-            const reminderTimes = formData.getAll('reminder_time[]');
-            const reminderTypes = formData.getAll('reminder_type[]');
-            const reminders = reminderTimes.map((time, index) => ({
-                time: time,
-                type: reminderTypes[index]
-            }));
-            formData.set('reminders', JSON.stringify(reminders));
-
             // Handle recurrence end date
             if (formData.get('recurrence') !== 'none' && formData.get('recurrence_end')) {
                 var recurrenceEndDate = new Date(formData.get('recurrence_end'));
@@ -302,23 +397,6 @@
             });
         }
 
-        function addReminderField() {
-            const reminderContainer = document.getElementById('reminderContainer');
-            const reminderField = document.createElement('div');
-            reminderField.innerHTML = `
-                <select name="reminder_time[]">
-                    <option value="PT15M">15 minutes before</option>
-                    <option value="PT1H">1 hour before</option>
-                    <option value="P1D">1 day before</option>
-                </select>
-                <select name="reminder_type[]">
-                    <option value="email">Email</option>
-                    <option value="notification">Notification</option>
-                </select>
-                <button type="button" onclick="this.parentElement.remove()">Remove</button>
-            `;
-            reminderContainer.appendChild(reminderField);
-}
         function openEditModal(event) {
             currentEventId = event.id;
             document.getElementById('editEventId').value = event.id;
@@ -380,6 +458,8 @@
             if (formData.get('recurrence') !== 'none' && formData.get('recurrence_end')) {
                 var recurrenceEndDate = new Date(formData.get('recurrence_end'));
                 formData.set('recurrence_end', formatDateISO(recurrenceEndDate));
+            } else {
+                formData.set('recurrence_end', 'null'); // Set to 'null' string if empty or recurrence is 'none'
             }
 
             fetch('/shop-calendar-new/event/update', {
@@ -436,6 +516,19 @@
                     alert('An error occurred while deleting the event. Please check the console for more details.');
                 });
             }
+        }
+
+        // Debounce function to limit how often a function is called
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
         }
     </script>
 </body>

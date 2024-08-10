@@ -73,7 +73,7 @@ class EventController {
             $endDate = $_POST['end_date'] ?? '';
             $categoryId = $_POST['category_id'] === 'null' ? null : ($_POST['category_id'] ?? null);
             $recurrence = $_POST['recurrence'] ?? 'none';
-            $recurrenceEnd = $_POST['recurrence_end'] ?? null;
+            $recurrenceEnd = $_POST['recurrence_end'] === 'null' ? null : ($_POST['recurrence_end'] ?? null);
     
             if (!$userId) {
                 throw new \Exception('User not authenticated');
@@ -136,6 +136,7 @@ class EventController {
                     'extendedProps' => [
                         'description' => $event['description'],
                         'category_id' => $event['category_id'],
+                        'category_name' => $event['category_name'],
                         'category_color' => $event['category_color'] ?? null,
                         'recurrence' => $event['recurrence'],
                         'recurrence_end' => $event['recurrence_end']
